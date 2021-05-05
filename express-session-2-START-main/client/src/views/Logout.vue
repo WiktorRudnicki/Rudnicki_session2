@@ -13,9 +13,17 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   async created() {
-    // enter your code here
+    let result = await axios({
+      method: 'get',
+      url: '/logout',
+
+    });
+    console.log(result);
+    localStorage.set('id', '');
+    localStorage.set('name', '')
   },
 };
 </script>

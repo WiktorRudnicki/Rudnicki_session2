@@ -20,7 +20,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 export default {
   name: 'Login',
   data() {
@@ -31,7 +31,18 @@ export default {
   },
   methods: {
     async login() {
-      // enter your code here
+      let reuslt = await axios({
+        methods: 'POST',
+        ulr: '/login',
+        'content-type': 'application/json',
+        data: {
+          email: this.email,
+          password: this.password,
+        },
+      });
+      localStorage.set('name', reuslt.data.name);
+      localStorage.set('id', reuslt.data.id);
+      this.$router.push({name: 'Home'});
     },
   },
 };

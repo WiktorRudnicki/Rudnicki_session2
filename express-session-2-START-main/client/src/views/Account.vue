@@ -31,7 +31,13 @@ export default {
     };
   },
   async created() {
-    // enter your code here
+    let result = await axios({
+      method: 'get',
+      url: '/secretdata'
+    });
+    this.prime = result.data.prime;
+    this.user.id = localStorage.getItem('id');
+    this.user.name = localStorage.getItem('name');
   },
 };
 </script>
